@@ -30,7 +30,7 @@ const Postlist = () => {
 };
 
 export const PostLoader = () => {
-  return fetch("https://vozmedia.onrender.com//post/posts")
+  return fetch("https://vozmedia.onrender.com/post/posts")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);

@@ -78,7 +78,7 @@ export async function FormAction2({ request }) {
   const data = Object.fromEntries(formData);
 
   // Send to your backend
-  const res = await fetch("https://vozmedia.onrender.com//post/posts", {
+  const res = await fetch("https://vozmedia.onrender.com/post/posts", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
