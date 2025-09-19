@@ -1,0 +1,49 @@
+
+@import "tailwindcss";
+
+
+
+/* *{
+  font-family: sans-serif;
+} */
+
+.app-container {
+  display: flex;
+}
+
+.content{
+  width: 100%;
+}
+
+.sidebar{
+  min-height: 800px;
+}
+
+.create-post {
+  width: 80%;
+  margin-top : 50px;
+  margin-left: 10%;
+
+}
+
+.post-card{
+  margin: 20px 50px;
+}
+
+.hashtag {
+  margin: 0px 3px;
+}
+
+.wel-container{
+  margin: 200px 0;
+}
+
+.home-btn:active{
+  background-color: #ddd;
+}
+
+
+.loading{
+  margin:190px 0;
+}
+
