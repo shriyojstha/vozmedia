@@ -1,18 +1,24 @@
 const PostData = require("../model/data.model");
 const Home = require("../model/data.model");
 
-exports.addPost = (req, res, next) => {
+exports.addPost = async (req, res, next) => {
   const { body } = req.body;
-  const home = new Home({ body });
 
-  home
-    .save()
-    .then(()=> {
-      console.log('Posted on DB')
-    })
-    .catch((err) => {
-      console.log("Error while posting in db: ", err);
+  try {
+    const home = new Home({ body });
+
+    await home.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Post Created",
     });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
 };
 
 exports.getPost = (req, res, next) => {

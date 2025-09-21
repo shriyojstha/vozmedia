@@ -11,6 +11,7 @@ const session = require("express-session");
 const MongoDBstore = require("connect-mongodb-session")(session);
 const express = require("express");
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 
 //const definition
 const app = express();
@@ -20,6 +21,7 @@ const db_PATH = process.env.DB_PATH;
 //middleware
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
@@ -27,7 +29,7 @@ app.use(cors());
 app.get("/", (req, res, next) => {
   res.send("Working");
 });
-app.use("/login", authRouter);
+app.use("/auth", authRouter);
 app.use("/post", postRouter);
 
 mongoose

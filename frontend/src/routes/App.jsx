@@ -1,49 +1,39 @@
-import Footer from "../components/Footer.jsx";
-import Header from "../components/Header.jsx";
-import Sidebar from "../components/Sidebar.jsx";
-// import Postlist from "../components/Postlist.jsx";
-// import Post from "../components/Post.jsx";
-import { useState } from "react";
-// import DataProvider from "../DataFiles/DataHandling.jsx";
-// import CreatePost from "../components/CreatePost.jsx";
-// import Welcome from "./components/WelcomePage.jsx";
-// import App1 from "../TodoFile/src/App.jsx";
+import React, { useEffect, useState } from "react";
+import NavBar from "../components/NavBar";
+import Feed from "../components/Feed";
+import Friends from "../components/Friends";
+import BottomNav from "../components/BottomNav";
+import { authStore } from "../store/authStore";
 import { Outlet } from "react-router-dom";
-// import Sidebar_V2 from "../components/SideBar_V2.jsx";
 
 const App = () => {
-  const [currState, setcurrState] = useState("Home");
+  const [dark, setDark] = useState(false);
 
-  const handleStateChange = (value) => {
-    setcurrState(value);
+  const { checkAuth, isAuthenticated } = authStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  
+
+  const toogleDarkMode = () => {
+    setDark((prevMode) => !prevMode);
+    document.documentElement.classList.toggle("dark", !dark);
   };
-
   return (
-    <>
-      <div className="app-container bg-gray-100">
-        <div className="flex">
-          <Sidebar />
-        </div>
-
-        {/* <Sidebar state={currState} setState={setcurrState}></Sidebar> */}
-        <div className="content">
-          <Header
-            TodoListCLicked={handleStateChange}
-            state={currState}
-          ></Header>
-
-          {/* {components[currState] || <h1>Error</h1>} */}
-
-          <main className="bg-gray-100">
-            <Outlet />
-          </main>
-
-          <footer>
-            <Footer />
-          </footer>
-        </div>
-      </div>
-    </>
+    <div
+      className={`flex min-h-screen w-full  justify-center items-center md:flex-row ${
+        dark ? "bg-black" : "bg-white"
+      }`}
+    >
+      <main className="flex min-h-screen w-full">
+        <NavBar toogleDarkMode={toogleDarkMode} darkMode={dark} />
+        <Outlet />
+        <Friends />
+        <BottomNav toogleDarkMode={toogleDarkMode} darkMode={dark} />
+      </main>
+    </div>
   );
 };
 

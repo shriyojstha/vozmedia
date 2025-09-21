@@ -16,7 +16,7 @@ const postSlice = createSlice({
       state.unshift(action.payload);
     },
     addPosts: (state, action) => {
-      return [...action.payload, ...state]; // merge server posts
+      return [...state, ...action.payload]; // merge server posts
     },
     delPost: (state, action) => {
       return state.filter((post) => post._id !== action.payload);

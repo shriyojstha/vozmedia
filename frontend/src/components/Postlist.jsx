@@ -1,10 +1,11 @@
-import Post from "./Post.jsx";
-import Welcome from "./WelcomePage.jsx";
+// import Post from "./Post.jsx";
+// import Welcome from "./WelcomePage.jsx";
 // import Loading from "./LoadingState.jsx";
 import { useLoaderData } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { postAction } from "../DataFiles/DataHandling.js";
+import Post from "./Post.jsx";
 import { useEffect } from "react";
 
 const Postlist = () => {
@@ -18,6 +19,7 @@ const Postlist = () => {
     dispatch(postAction.addPosts(state1));
   }, [state1]);
 
+  console.log(state);
   // const final_state = state;
   return (
     <>
@@ -30,7 +32,7 @@ const Postlist = () => {
 };
 
 export const PostLoader = () => {
-  return fetch("https://vozmedia.onrender.com/post/posts")
+  return fetch("http://localhost:3000/post/posts")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);

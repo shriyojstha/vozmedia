@@ -1,6 +1,10 @@
 // const { MailtrapClient } = require("mailtrap");
 const { mailtrapClient, sender } = require("./mailtrap.config");
-const { VERIFICATION_EMAIL_TEMPLATE } = require("./emailTemplate");
+const {
+  VERIFICATION_EMAIL_TEMPLATE,
+  PASSWORD_RESET_REQUEST_TEMPLATE,
+  PASSWORD_RESET_SUCCESS_TEMPLATE,
+} = require("./emailTemplate");
 
 exports.sendVerificationEmail = async (email, token) => {
   const recipient = [{ email }];
@@ -37,6 +41,38 @@ exports.sendWelcomeEmail = async (email, username) => {
       },
     });
 
+  } catch (err) {
+    throw new Error(`Error: ${err}`);
+  }
+};
+
+exports.sendResetPassToken = async (email, resetURL) => {
+  const recipient = [{ email }];
+  console.log(email, resetURL);
+  try {
+    // const response = await mailtrapClient.send({
+    //   from: sender,
+    //   to: recipient,
+    //   subject: "RESET PASSWORD",
+    //   html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL),
+    //   category: "change password",
+    // });
+  } catch (err) {
+    throw new Error(`Error: ${err}`);
+  }
+};
+
+exports.sendResetSuccess = async (email) => {
+  const recipient = [{ email }];
+
+  try {
+    // const response = await mailtrapClient.send({
+    //   from: sender,
+    //   to: recipient,
+    //   subject: "RESET PASSWORD",
+    //   html: PASSWORD_RESET_SUCCESS_TEMPLATE,
+    //   category: "change password",
+    // });
   } catch (err) {
     throw new Error(`Error: ${err}`);
   }

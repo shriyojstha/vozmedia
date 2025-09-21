@@ -19,13 +19,13 @@ const CreatePost2 = () => {
   }, [data]);
 
   return (
-    <Form method="POST"  className="create-post">
+    <Form method="POST" className="create-post">
       <div
         className="bg-[#ffffff] rounded-xl 
         shadow-md w-[500px] max-w-[95%] 
-        p-4 text-lg font-sans font-mono
+        p-4 text-lg font-sans 
       transform [transform-style:preserve-3d]
-      transition-transform transition-shadow duration-300 ease-in-out  hover:shadow-2xl
+      transition-transform  duration-300 ease-in-out  hover:shadow-2xl
       
       [perspective:1500px] relative
       "
@@ -78,7 +78,7 @@ export async function FormAction2({ request }) {
   const data = Object.fromEntries(formData);
 
   // Send to your backend
-  const res = await fetch("https://vozmedia.onrender.com/post/posts", {
+  const res = await fetch("http://localhost:3000/post/posts", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
