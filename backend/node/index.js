@@ -3,12 +3,13 @@
 //local modules
 const postRouter = require("./routes/post.routes");
 const authRouter = require("./routes/auth.routes");
+const uploadRouter = require("./routes/upload.routes");
 
 //external modules
 const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 const session = require("express-session");
-const MongoDBstore = require("connect-mongodb-session")(session);
+// const MongoDBstore = require("connect-mongodb-session")(session);
 const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
@@ -31,6 +32,7 @@ app.get("/", (req, res, next) => {
 });
 app.use("/auth", authRouter);
 app.use("/post", postRouter);
+app.use("/upload", uploadRouter);
 
 mongoose
   .connect(db_PATH)

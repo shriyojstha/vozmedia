@@ -17,7 +17,7 @@ import App1 from "./TodoFile/src/App.jsx";
 import store from "./DataFiles/index.js";
 import { Provider } from "react-redux";
 import Sign from "./components/Login_Details/SignIn.jsx";
-import CreatePost2, { FormAction2 } from "./components/createPost2.jsx";
+import CreatePost2 from "./components/createPost2.jsx";
 import Loading from "../src/components/LoadingState.jsx";
 import VerifyEmailForm from "./components/Login_Details/verifyEmail.jsx";
 const Postlist = lazy(() => import("../src/components/Postlist"));
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/create",
         element: <CreatePost2 />,
-        action: FormAction2,
+        
       },
       {
         path: "/",

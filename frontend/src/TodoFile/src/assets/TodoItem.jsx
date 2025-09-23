@@ -13,7 +13,7 @@ const TodoItem = ({ names, dueDates }) => {
         <div className="col-2">
           <button
             type="button"
-            class="btn btn-danger"
+            className="btn btn-danger"
             // onClick={() => delBtnClicked(names)}
             onClick={() => {
               console.log("btn clicked");

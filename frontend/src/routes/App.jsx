@@ -5,16 +5,19 @@ import Friends from "../components/Friends";
 import BottomNav from "../components/BottomNav";
 import { authStore } from "../store/authStore";
 import { Outlet } from "react-router-dom";
+import { postStore } from "../store/postStore";
 
 const App = () => {
   const [dark, setDark] = useState(false);
 
-  const { checkAuth, isAuthenticated } = authStore();
+  const { checkAuth, isAuthenticated, user } = authStore();
+
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
 
+  console.log(user);
   
 
   const toogleDarkMode = () => {
