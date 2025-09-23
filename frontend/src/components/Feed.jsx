@@ -18,9 +18,11 @@ import f2 from "../public/public/f2.jpg";
 import f3 from "../public/public/f3.jpg";
 import f4 from "../public/public/f4.jpg";
 import CreateDummy from "./createDummy";
+import { authStore } from "../store/authStore";
 
 const Feed = () => {
   const { getPost, postData } = postStore();
+  const {isAuthenticated} = authStore();
   const state = useSelector((store) => store.POSTS);
   const dispatch = useDispatch();
   const [isOpen, setOpen] = useState(false);
@@ -49,7 +51,7 @@ const Feed = () => {
   return (
     <div className="flex flex-[2] flex-col justify-center items-center gap-3 px-3">
       <SharePost onOpen={() => setOpen(true)} />
-      {isOpen && <CreateDummy close={setOpen} />}
+      {isAuthenticated && isOpen && <CreateDummy close={setOpen} />}
 
       {postData.success && postData.post.map((items) => (
         <Post key={items._id} item={items} B1={B1} />
