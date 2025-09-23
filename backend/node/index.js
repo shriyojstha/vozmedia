@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors({
-  origin: 'https://vozmedia.vercel.app/',
+  origin: 'https://vozmedia.vercel.apps',
   credentials: true,
 }));
 
