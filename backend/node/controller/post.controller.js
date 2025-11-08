@@ -1,5 +1,5 @@
 const postData= require("../model/post.model");
-const Home = require("../model/data.model");
+
 
 exports.addPost = async (req, res, next) => {
   const { body, imgUrl, username} = req.body;

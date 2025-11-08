@@ -88,8 +88,8 @@ export const authStore = create((set) => ({
       await axios.post(`${API_URL}/logout`);
       set({ isLoading: false, isAuthenticated: false, user: null });
     } catch (error) {
-      throw error;
       set({ isLoading: false, isAuthCheck: false });
+      throw error;
     }
   },
 
@@ -106,7 +106,7 @@ export const authStore = create((set) => ({
       });
     } catch (error) {
       set({
-        error: null,
+        error: error?.response?.data?.message,
         isAuthenticated: false,
         isCheckingAuth: false,
         isLoading: false,
