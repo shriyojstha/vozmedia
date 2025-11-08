@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
-import Feed from "../components/Feed";
+
 import Friends from "../components/Friends";
 import BottomNav from "../components/BottomNav";
 import { authStore } from "../store/authStore";
 import { Outlet } from "react-router-dom";
-import { postStore } from "../store/postStore";
+
 
 const App = () => {
   const [dark, setDark] = useState(false);
